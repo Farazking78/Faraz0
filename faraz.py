@@ -73,7 +73,7 @@ logo = ("""
 \033[1;32m      FARAZ KING PAKISTANI HACKER
 """)
     
-\033[1;33m═━═━═━═━═━═━═━═━═━═━═━═━═━═━═━═━═━═━═━═━═━═━═
+print("\033[1;33m═━═━═━═━═━═━═━═━═━═━═━═━═━═━═━═━═━═━═━═━═━═━═")
 \033[1;32m(√) DEVELOPER   ➠   FARAZ KING
 \033[1;33m(√) OWNER       ➠   FARAZ KING
 \033[1;36m(√) WHATSAPP    ➠   https://whatsapp.com/channel/0029Vb5vSUvGehEDd61AwH2g
