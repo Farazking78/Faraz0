@@ -7,13 +7,18 @@ try:
         from concurrent.futures import ThreadPoolExecutor as tred
 except ModuleNotFoundError:
         os.system(f'pip install requests futures==2 > /dev/null')
-except:pass
-i# ======== KEY APPROVAL SYSTEM ========
+except:
+    pass
+
+# ======== KEY APPROVAL SYSTEM ========
 import uuid, sys, requests
 
-print("\033[1;32mWelcome to Faraz Tool 🔥")
-user_name = input("\033[1;36mTumhara naam kya hai?: ").strip().upper()
+print('\033[1;33m═━═━═━═━═━═━═━═━═━═━═\033[0m')
+print('\033[1;33m      Welcome Faraz Tool      \033[0m')
+print('\033[1;33m═━═━═━═━═━═━═━═━═━═━═\033[0m')
 
+print('\033[1;32mWelcome to Faraz Tool 🔥')
+user_name = input('\033[1;36mTumhara naam kya hai?: ').strip().upper()
 # Agar user blank naam dalta hai to default FARAZ
 if user_name == "":
     user_name = "FARAZ"
