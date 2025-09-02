@@ -22,7 +22,7 @@ if user_name == "":
 key = f"FARAZ-{user_name}-{uuid.getnode()}"
 
 # GitHub approve.txt ka raw link
-approve_url = "https://raw.githubusercontent.com/Faraz0/YourRepo/main/approve.txt"
+approve_url = "https://raw.githubusercontent.com/Farazking78/Faraz0/refs/heads/main/approve.txt"
 
 try:
     r = requests.get(approve_url).text
