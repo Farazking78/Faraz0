@@ -125,9 +125,9 @@ def linex():
 def clear():
         session = requests.Session()
         try:
-                first = names.split(f' ')[0]
+                first = user_name.split(' ')[0]
                 try:
-                        last = names.split(f' ')[1]
+                        last = user_name.split(' ')[1]
                 except:
                         last = 'KING'
                 ps = first.lower()
